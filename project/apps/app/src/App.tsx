@@ -28,7 +28,7 @@ const App = () => {
   return (
   <>
     <h1>Pokemon list:</h1>
-    <List data={pokemonList} />
+    {/* <List data={pokemonList} /> */}
     <div id='container'>
         Question 1: How did you manage to fetch the list and what tool did you use?
         <br />
