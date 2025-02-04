@@ -4,9 +4,16 @@ import Axios from 'axios';
 
 const api = "https://pokeapi.co/api/v2/pokemon?limit=151"
 
+type Pokemon = {
+  name: string;
+  url: string;
+};
+
 const App = () => {
 
-  const [pokemonList, setPokemonList] = useState([]);
+  
+
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
 
   useEffect(()=>{
