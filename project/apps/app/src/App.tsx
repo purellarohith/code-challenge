@@ -4,9 +4,18 @@ import Axios from 'axios';
 
 const api = "https://pokeapi.co/api/v2/pokemon?limit=151"
 
+
+type Pokemon = {
+  name: string;
+  url: string;
+};
+
+
+
+
 const App = () => {
 
-  const [pokemonList, setPokemonList] = useState([]);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
 
   useEffect(()=>{
@@ -18,10 +27,9 @@ const App = () => {
       try {
         const response = await Axios.get(api);
         const data = await response.data
-        console.log(data)
         setPokemonList(data.results);
       } catch (error) {
-        console.error("Error", error);
+        console.error("Error while fetching API", error);
       } 
   }
 
