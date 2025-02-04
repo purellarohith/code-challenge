@@ -17,7 +17,6 @@ export const List:React.FC<PokemonList> = ({
   data
 }:PokemonList) => {
 
-
   return (
   <div>
     <div id='list'>
