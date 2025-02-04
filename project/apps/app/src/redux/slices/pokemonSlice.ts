@@ -19,11 +19,15 @@ const pokemonSlice = createSlice({
     setPokemonList(state, action: PayloadAction<Pokemon[]>) {
       state.allPokemons = action.payload;
     },
+    removePokemon(state,action:PayloadAction<Pokemon>){
+      state.allPokemons = state.allPokemons.filter((pokemon) => pokemon.name !== action.payload.name);
+    }
   },
 });
 
 export const { 
-    setPokemonList 
+    setPokemonList ,
+    removePokemon
 } = pokemonSlice.actions;
 
 
