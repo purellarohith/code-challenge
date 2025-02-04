@@ -1,8 +1,11 @@
 #list{
-    gap: 2rem;
-    display: flex;
-    flex-direction: column;
+    row-gap: 4rem;
+    column-gap: 8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     font-size: 26px;
+    text-wrap:nowrap;
+    padding: 2rem 4rem;
 }
 
 #container{

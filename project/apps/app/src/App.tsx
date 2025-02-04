@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import { List } from 'ui'
 import Axios from 'axios';
+import { RootMainState } from './redux/store';
+import { setPokemonList } from './redux/slices/pokemonSlice';
 
 const api = "https://pokeapi.co/api/v2/pokemon?limit=151"
 
 const App = () => {
 
-  const [pokemonList, setPokemonList] = useState([]);
-
+  const dispatch = useDispatch();
+  const pokemonList = useSelector((state: RootMainState) => state.pokemon.allPokemons);
+ 
 
   useEffect(()=>{
     fetchAllPokimons()
@@ -18,9 +22,8 @@ const App = () => {
       try {
         const response = await Axios.get(api);
         const data = await response.data
-        console.log(data)
-        setPokemonList(data.results);
-      } catch (error) {
+        dispatch(setPokemonList(data.results));     
+       } catch (error) {
         console.error("Error", error);
       } 
   }
@@ -29,6 +32,7 @@ const App = () => {
   <>
     <h1>Pokemon list:</h1>
     <List data={pokemonList} />
+    
   </>
   )
 }
